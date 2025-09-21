@@ -5,16 +5,16 @@ public class Calculator {
         double FirstNum = 0;
         double SecondNum = 0;
 
-        System.out.print("Введите первое число: ");
+        System.out.print("Write first number: ");
         FirstNum = sc.nextDouble();
-        System.out.print("Введите второе число: ");
+        System.out.print("Write second number: ");
         SecondNum = sc.nextDouble();
 
         return new double[]{FirstNum, SecondNum};
     }
 
     private static char getOperation(Scanner sc) {
-        System.out.print("Выберите операцию: +, -, *, /: ");
+        System.out.print("Select operation: +, -, *, /: ");
         String str = sc.next();
         char c = str.charAt(0);
         return c;
@@ -30,7 +30,7 @@ public class Calculator {
                 return num1 * num2;
             case ('/'):
                 if (num2 == 0) {
-                    System.out.println("На ноль нельзя делить");
+                    System.out.println("You can't divide by zero");
                 } else {
                     return num1 / num2;
                 }
@@ -44,6 +44,6 @@ public class Calculator {
         double[] read = readNumbers(sc);
         char operation = getOperation(sc);
         double result = calculate(read[0], read[1], operation);
-        System.out.printf("Результат: %.2f", result);
+        System.out.printf("Result: %.2f", result);
     }
 }
