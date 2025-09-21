@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     private static char getOperation(Scanner sc) {
-        System.out.print("Select operation: +, -, *, /: ");
+        System.out.print("Select operation: +, -, *, /, % (remainder of division): ");
         String str = sc.next();
         char c = str.charAt(0);
         return c;
@@ -34,7 +34,14 @@ public class Calculator {
                 } else {
                     return num1 / num2;
                 }
+            case ('%'):
+                if (num2 == 0) {
+                    System.out.println("You can't divide by zero");
+                } else {
+                    return num1 % num2;
+                }
             default:
+                System.out.print("Unknown operation, ");
                 return Double.NaN;
         }
     }
@@ -44,6 +51,6 @@ public class Calculator {
         double[] read = readNumbers(sc);
         char operation = getOperation(sc);
         double result = calculate(read[0], read[1], operation);
-        System.out.printf("Result: %.2f", result);
+        System.out.printf("result: %.2f", result);
     }
 }
