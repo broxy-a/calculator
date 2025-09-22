@@ -62,6 +62,6 @@ public class Calculator {
         double[] read = readNumbers(sc);
         char operation = getOperation(sc);
         double result = calculate(read[0], read[1], operation);
-        System.out.printf("result: %.2f", result);
+        System.out.printf("Result: %.2f", result);
     }
 }
