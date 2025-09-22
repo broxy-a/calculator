@@ -14,9 +14,20 @@ public class Calculator {
     }
 
     private static char getOperation(Scanner sc) {
-        System.out.print("Select operation: +, -, *, /, % (remainder of division): ");
-        String str = sc.next();
-        char c = str.charAt(0);
+        char[] allowed = {'+', '-', '*', '/', '%'};
+        boolean validChar = false;
+        String str = "";
+        char c = 'c';
+
+        while (!validChar) {
+            System.out.print("Select operation: +, -, *, /, % (remainder of division): ");
+            str = sc.next();
+            c = str.charAt(0);
+            for (char c1 : allowed) {
+                if (c == c1) {validChar = true; break;}
+            }
+            if (!validChar) System.out.println("Unknown operation. Try again: ");
+        }
         return c;
     }
 
@@ -50,6 +61,6 @@ public class Calculator {
         double[] read = readNumbers(sc);
         char operation = getOperation(sc);
         double result = calculate(read[0], read[1], operation);
-        System.out.printf("result: %.2f", result);
+        System.out.printf("Result: %.2f", result);
     }
 }
