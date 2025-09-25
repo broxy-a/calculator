@@ -14,13 +14,13 @@ public class Calculator {
     }
 
     private static char getOperation(Scanner sc) {
-        char[] allowed = {'+', '-', '*', '/', '%'};
+        char[] allowed = {'+', '-', '*', '/', '%', '^'};
         boolean validChar = false;
         String str = "";
         char c = 'c';
 
         while (!validChar) {
-            System.out.print("Select operation: +, -, *, /, % (remainder of division): ");
+            System.out.print("Select operation: +, -, *, /, % (remainder of division), ^ (power): ");
             str = sc.next();
             c = str.charAt(0);
             for (char c1 : allowed) {
@@ -45,9 +45,12 @@ public class Calculator {
                 } else {
                     return num1 / num2;
                 }
+            case ('^'):
+                return Math.pow(num1, num2);
             case ('%'):
                 if (num2 == 0) {
                     System.out.println("You can't divide by zero");
+                    return Double.NaN;
                 } else {
                     return num1 % num2;
                 }
