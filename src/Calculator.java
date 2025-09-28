@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Calculator {
@@ -24,7 +25,10 @@ public class Calculator {
             str = sc.next();
             c = str.charAt(0);
             for (char c1 : allowed) {
-                if (c == c1) {validChar = true; break;}
+                if (c == c1) {
+                    validChar = true;
+                    break;
+                }
             }
             if (!validChar) System.out.println("Unknown operation. Try again: ");
         }
@@ -62,9 +66,16 @@ public class Calculator {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double[] read = readNumbers(sc);
-        char operation = getOperation(sc);
-        double result = calculate(read[0], read[1], operation);
-        System.out.printf("Result: %.2f", result);
+        String answer = "";
+        do {
+            double[] read = readNumbers(sc);
+            char operation = getOperation(sc);
+            double result = calculate(read[0], read[1], operation);
+            System.out.printf("Result: %.2f \n", result);
+            System.out.print("Do you want to continue? y/n: ");
+            answer = sc.next();
+        } while (answer.equalsIgnoreCase("y"));
+
+        sc.close();
     }
 }
